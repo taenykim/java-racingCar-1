@@ -1,0 +1,23 @@
+{
+  "name": "java-racingcar-1",
+  "version": "1.0.0",
+  "description": "java-racingcar",
+  "main": "main.js",
+  "dependencies": {
+    "jest": "^25.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taenykim/java-racingCar-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taenykim/java-racingCar-1/issues"
+  },
+  "homepage": "https://github.com/taenykim/java-racingCar-1#readme"
+}
