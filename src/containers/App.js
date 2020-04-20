@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { makeCars, makeProcess, moveCar, makeResult } from '../modules/racingCar'
+import { makeCars, makeProcess, moveCars, makeResult } from '../modules/racingCar'
 import Processes from '../components/Processes'
 import Result from '../components/Result'
 
@@ -53,9 +53,7 @@ const App = () => {
     const cars = makeCars(_carNames)
     const _processes = []
     for (let i = 0; i < count; i++) {
-      cars.forEach((car) => {
-        moveCar(car)
-      })
+      moveCars(cars)
       _processes.push(makeProcess(cars))
     }
     setProcesses([..._processes])
