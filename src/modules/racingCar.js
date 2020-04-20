@@ -1,12 +1,6 @@
 import React from 'react'
 import Car from './Car'
 
-/*
- ************************
- * export 모듈           *
- ************************
- */
-
 const makeCars = (carNames) => {
   const _cars = []
   for (let i = 0; i < carNames.length; i++) {
@@ -85,3 +79,5 @@ const getWinner = (cars) => {
 }
 
 export { makeCars, moveCars, makeProcess, makeResult }
+
+export { makeDistance, getWinner }
