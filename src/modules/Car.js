@@ -8,5 +8,4 @@ export default class Car {
   go() {
     this.position = this.position + 1
   }
-  // 추가 기능 구현
 }

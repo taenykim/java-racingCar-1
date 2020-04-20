@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import './App.css'
+import { makeCars, makeProcess, moveCar, makeResult } from '../modules/racingCar'
+import Processes from '../components/Processes'
+import Result from '../components/Result'
 
 const App = () => {
   const [carNames, setCarNames] = useState('')
   const [count, setCount] = useState('')
   const [carNameLengthError, setCarNameLengthError] = useState(false)
   const [carNameIsBlankError, setCarNameIsBlankError] = useState(false)
+  const [processes, setProcesses] = useState(null)
+  const [result, setResult] = useState(null)
 
   const onChangeCarNames = (e) => {
     setCarNames(e.target.value)
@@ -46,7 +50,16 @@ const App = () => {
     setCarNameIsBlankError(false)
     setCarNameLengthError(false)
 
-    console.log(_carNames)
+    const cars = makeCars(_carNames)
+    const _processes = []
+    for (let i = 0; i < count; i++) {
+      cars.forEach((car) => {
+        moveCar(car)
+      })
+      _processes.push(makeProcess(cars))
+    }
+    setProcesses([..._processes])
+    setResult(makeResult(cars))
   }
 
   return (
@@ -76,6 +89,8 @@ const App = () => {
           <div style={{ color: 'red' }}>에러! 자동차이름은 공백이 될 수 없습니다</div>
         )}
       </form>
+      <Processes processes={processes} />
+      <Result result={result} />
     </div>
   )
 }
