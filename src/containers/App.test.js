@@ -1,15 +1,16 @@
-// import React from 'react';
-// import { render } from '@testing-library/react';
-// import App from './App';
+import React from 'react'
+import { render, fireEvent } from '@testing-library/react'
+import Adapter from 'enzyme-adapter-react-16'
+import Enzyme, { mount, shallow } from 'enzyme'
+import App from './App'
 
-// test('renders learn react link', () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
+Enzyme.configure({ adapter: new Adapter() })
 
-// import App from './App'
+describe('렌더링', () => {
+  it('성공적으로 렌더링되어야 합니다.', () => {
+    const wrapper = shallow(<App />)
+    expect(wrapper.length).toBe(1)
+  })
+})
 
-// test('dhdld', () => {
-//   expect(App.checkCarNameLength(['123456'])).toBe(false)
-// })
+// 여기는 jsx(엘리먼트들) 테스트 용

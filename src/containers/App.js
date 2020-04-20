@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { makeCars, makeProcess, moveCars, makeResult } from '../modules/racingCar'
 import Processes from '../components/Processes'
 import Result from '../components/Result'
+import { checkCarNameLength, trimCarNameBlank } from '../modules/formValidator'
 
 const App = () => {
   const [carNames, setCarNames] = useState('')
@@ -17,18 +18,6 @@ const App = () => {
 
   const onChangeCount = useCallback((e) => {
     setCount(e.target.value)
-  }, [])
-
-  const checkCarNameLength = useCallback((carNames) => {
-    const MAX_CARNAME_LENGTH = 5
-    for (let i = 0; i < carNames.length; i++) {
-      if (carNames[i].length > MAX_CARNAME_LENGTH) return false
-    }
-    return true
-  }, [])
-
-  const trimCarNameBlank = useCallback((carNames) => {
-    return carNames.map((carName) => carName.trim())
   }, [])
 
   const onSubmit = useCallback(
@@ -84,10 +73,14 @@ const App = () => {
           <button type="submit">입력</button>
         </div>
         {carNameLengthError && (
-          <div style={{ color: 'red' }}>에러! 자동차이름은 5이하로 해야합니다</div>
+          <div id="carNameLengthError" style={{ color: 'red' }}>
+            에러! 자동차이름은 5이하로 해야합니다
+          </div>
         )}
         {carNameIsBlankError && (
-          <div style={{ color: 'red' }}>에러! 자동차이름은 공백이 될 수 없습니다</div>
+          <div id="carNameIsBlankError" style={{ color: 'red' }}>
+            에러! 자동차이름은 공백이 될 수 없습니다
+          </div>
         )}
       </form>
       <Processes processes={processes} />
