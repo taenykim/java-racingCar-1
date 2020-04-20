@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { makeCars, makeProcess, moveCars, makeResult } from '../modules/racingCar'
 import Processes from '../components/Processes'
 import Result from '../components/Result'
@@ -11,54 +11,57 @@ const App = () => {
   const [processes, setProcesses] = useState(null)
   const [result, setResult] = useState(null)
 
-  const onChangeCarNames = (e) => {
+  const onChangeCarNames = useCallback((e) => {
     setCarNames(e.target.value)
-  }
+  }, [])
 
-  const onChangeCount = (e) => {
+  const onChangeCount = useCallback((e) => {
     setCount(e.target.value)
-  }
+  }, [])
 
-  const checkCarNameLength = (carNames) => {
+  const checkCarNameLength = useCallback((carNames) => {
     const MAX_CARNAME_LENGTH = 5
     for (let i = 0; i < carNames.length; i++) {
       if (carNames[i].length > MAX_CARNAME_LENGTH) return false
     }
     return true
-  }
+  }, [])
 
-  const trimCarNameBlank = (carNames) => {
+  const trimCarNameBlank = useCallback((carNames) => {
     return carNames.map((carName) => carName.trim())
-  }
+  }, [])
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-    let _carNames = carNames.split(',')
-    _carNames = trimCarNameBlank(_carNames)
-    _carNames = _carNames.filter((v) => v !== '')
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault()
+      let _carNames = carNames.split(',')
+      _carNames = trimCarNameBlank(_carNames)
+      _carNames = _carNames.filter((v) => v !== '')
 
-    if (_carNames.length === 0) {
-      setCarNameIsBlankError(true)
-      return
-    }
+      if (_carNames.length === 0) {
+        setCarNameIsBlankError(true)
+        return
+      }
 
-    if (!checkCarNameLength(_carNames)) {
-      setCarNameLengthError(true)
-      return
-    }
+      if (!checkCarNameLength(_carNames)) {
+        setCarNameLengthError(true)
+        return
+      }
 
-    setCarNameIsBlankError(false)
-    setCarNameLengthError(false)
+      setCarNameIsBlankError(false)
+      setCarNameLengthError(false)
 
-    const cars = makeCars(_carNames)
-    const _processes = []
-    for (let i = 0; i < count; i++) {
-      moveCars(cars)
-      _processes.push(makeProcess(cars))
-    }
-    setProcesses([..._processes])
-    setResult(makeResult(cars))
-  }
+      const cars = makeCars(_carNames)
+      const _processes = []
+      for (let i = 0; i < count; i++) {
+        moveCars(cars)
+        _processes.push(makeProcess(cars))
+      }
+      setProcesses([..._processes])
+      setResult(makeResult(cars))
+    },
+    [carNames, count]
+  )
 
   return (
     <div>

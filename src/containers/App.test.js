@@ -10,4 +10,6 @@
 
 // import App from './App'
 
-// test('')
+// test('dhdld', () => {
+//   expect(App.checkCarNameLength(['123456'])).toBe(false)
+// })
