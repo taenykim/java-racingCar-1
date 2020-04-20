@@ -2,13 +2,14 @@ import React, { useState, useCallback } from 'react'
 import { makeCars, makeProcess, moveCars, makeResult } from '../modules/racingCar'
 import Processes from '../components/Processes'
 import Result from '../components/Result'
-import { checkCarNameLength, trimCarNameBlank } from '../modules/formValidator'
+import { validateInput } from '../modules/formValidator'
 
 const App = () => {
   const [carNames, setCarNames] = useState('')
   const [count, setCount] = useState('')
   const [carNameLengthError, setCarNameLengthError] = useState(false)
   const [carNameIsBlankError, setCarNameIsBlankError] = useState(false)
+  const [countIsNotNumberError, setCountIsNotNumberError] = useState(false)
   const [processes, setProcesses] = useState(null)
   const [result, setResult] = useState(null)
 
@@ -23,18 +24,15 @@ const App = () => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault()
-      let _carNames = carNames.split(',')
-      _carNames = trimCarNameBlank(_carNames)
-      _carNames = _carNames.filter((v) => v !== '')
-
-      if (_carNames.length === 0) {
-        setCarNameIsBlankError(true)
-        return
+      const validator = validateInput(carNames, count)
+      if (validator === 'CAR_NAME_IS_BLANK_ERROR') {
+        return setCarNameIsBlankError(true)
       }
-
-      if (!checkCarNameLength(_carNames)) {
-        setCarNameLengthError(true)
-        return
+      if (validator === 'CAR_NAME_IS_BLANK_ERROR') {
+        return setCarNameLengthError(true)
+      }
+      if (validator === 'COUNT_IS_NOT_NUMBER_ERROR') {
+        return setCountIsNotNumberError(true)
       }
 
       setCarNameIsBlankError(false)
@@ -80,6 +78,11 @@ const App = () => {
         {carNameIsBlankError && (
           <div id="carNameIsBlankError" style={{ color: 'red' }}>
             에러! 자동차이름은 공백이 될 수 없습니다
+          </div>
+        )}
+        {countIsNotNumberError && (
+          <div id="carNameIsBlankError" style={{ color: 'blue' }}>
+            에러! 시도할 횟수는 숫자를 입력하세오
           </div>
         )}
       </form>
