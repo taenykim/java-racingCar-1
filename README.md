@@ -4,16 +4,16 @@
 java-racingCar-1
 ├── src
 │   ├── components
-│   │   ├── Processes.jsx (실행과정만 출력)
-│   │   ├── Result.jsx (실행결과만 출력)
+│   │   ├── Processes.tsx (실행과정만 출력)
+│   │   ├── Result.tsx (실행결과만 출력)
 │   ├── containers
-│   │   ├── App.js (메인 컨테이너)
-│   │   ├── App.test.js
+│   │   ├── App.test.tsx
+│   │   ├── App.tsx (메인 컨테이너)
 │   ├── modules
-│   │   ├── Car.js (Car 객체)
-│   │   ├── Car.test.js
-│   │   ├── formValidator.js (사용자 인풋 검증)
-│   │   ├── formValidator.test.js
-│   │   ├── racingCar.js (자동차 관련 함수)
-│   │   ├── racingCar.test.js
+│   │   ├── Car.test.ts
+│   │   ├── Car.ts (Car 객체)
+│   │   ├── formValidator.test.ts
+│   │   ├── formValidator.ts (사용자 인풋 검증)
+│   │   ├── racingCar.test.tsx
+│   │   ├── racingCar.tsx (자동차 관련 함수)
 ```
