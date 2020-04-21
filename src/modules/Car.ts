@@ -1,8 +1,8 @@
 export default class Car {
-  name
+  name: string
   position = 0
 
-  constructor(name) {
+  constructor(name: string) {
     this.name = name
   }
   go() {

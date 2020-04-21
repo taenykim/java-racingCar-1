@@ -1,4 +1,4 @@
-const validateInput = (carNames, count) => {
+const validateInput = (carNames: string, count: string) => {
   let _carNames = carNames.split(',')
   _carNames = trimCarNameBlank(_carNames)
   _carNames = _carNames.filter((v) => v !== '')
@@ -17,7 +17,7 @@ const validateInput = (carNames, count) => {
   return _carNames
 }
 
-const checkCarNameLength = (carNames) => {
+const checkCarNameLength = (carNames: string[]) => {
   const MAX_CARNAME_LENGTH = 5
   for (let i = 0; i < carNames.length; i++) {
     if (carNames[i].length > MAX_CARNAME_LENGTH) return false
@@ -25,11 +25,11 @@ const checkCarNameLength = (carNames) => {
   return true
 }
 
-const trimCarNameBlank = (carNames) => {
+const trimCarNameBlank = (carNames: string[]) => {
   return carNames.map((carName) => carName.trim())
 }
 
-const checkCountIsNumber = (count) => {
+const checkCountIsNumber = (count: string) => {
   if (count.match(/\D/g)) return false
   return true
 }

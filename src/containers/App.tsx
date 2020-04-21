@@ -10,8 +10,8 @@ const App = () => {
   const [carNameLengthError, setCarNameLengthError] = useState(false)
   const [carNameIsBlankError, setCarNameIsBlankError] = useState(false)
   const [countIsNotNumberError, setCountIsNotNumberError] = useState(false)
-  const [processes, setProcesses] = useState(null)
-  const [result, setResult] = useState(null)
+  const [processes, setProcesses] = useState<any[]>([])
+  const [result, setResult] = useState<any>(null)
 
   const onChangeCarNames = useCallback((e) => {
     setCarNames(e.target.value)
@@ -28,7 +28,7 @@ const App = () => {
       if (validator === 'CAR_NAME_IS_BLANK_ERROR') {
         return setCarNameIsBlankError(true)
       }
-      if (validator === 'CAR_NAME_IS_BLANK_ERROR') {
+      if (validator === 'CAR_NAME_LENGTH_ERROR') {
         return setCarNameLengthError(true)
       }
       if (validator === 'COUNT_IS_NOT_NUMBER_ERROR') {
@@ -41,7 +41,8 @@ const App = () => {
 
       const cars = makeCars(_carNames)
       const _processes = []
-      for (let i = 0; i < count; i++) {
+      let _count = Number(count)
+      for (let i = 0; i < _count; i++) {
         moveCars(cars)
         _processes.push(makeProcess(cars))
       }

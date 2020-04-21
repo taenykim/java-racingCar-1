@@ -1,7 +1,7 @@
 import React from 'react'
 import Car from './Car'
 
-const makeCars = (carNames) => {
+const makeCars = (carNames: string[]) => {
   const _cars = []
   for (let i = 0; i < carNames.length; i++) {
     _cars.push(new Car(carNames[i]))
@@ -9,14 +9,14 @@ const makeCars = (carNames) => {
   return _cars
 }
 
-const moveCars = (cars) => {
+const moveCars = (cars: Car[]) => {
   cars.forEach((car) => {
     moveCar(car)
   })
 }
 
 // jsx 생성함수
-const makeProcess = (cars) => {
+const makeProcess = (cars: Car[]) => {
   return (
     <div style={{ marginTop: '20px' }}>
       {cars.map((car, i) => (
@@ -29,7 +29,7 @@ const makeProcess = (cars) => {
 }
 
 // jsx 생성함수
-const makeResult = (cars) => {
+const makeResult = (cars: Car[]) => {
   return (
     <div style={{ marginTop: '20px', fontWeight: 'bold' }}>
       {getWinner(cars)}가 최종 우승했습니다.
@@ -37,7 +37,7 @@ const makeResult = (cars) => {
   )
 }
 
-const moveCar = (car) => {
+const moveCar = (car: Car) => {
   if (checkMoveCarCondition()) {
     car.go()
   }
@@ -49,7 +49,7 @@ const checkMoveCarCondition = () => {
   return Math.floor(Math.random() * RANDOM_NUMBER_RANGE) >= MOVE_CAR_CONDITION ? true : false
 }
 
-const makeDistance = (num) => {
+const makeDistance = (num: number) => {
   let _str = ''
   for (let i = 0; i < num; i++) {
     _str += '-'
@@ -57,9 +57,9 @@ const makeDistance = (num) => {
   return _str
 }
 
-const getWinner = (cars) => {
+const getWinner = (cars: Car[]) => {
   let max = 0
-  let winner = []
+  let winner: string[] = []
 
   cars.forEach((car) => {
     if (car.position > max) max = car.position
