@@ -14,6 +14,7 @@ const validateInput = (carNames, count) => {
   if (!checkCountIsNumber(count)) {
     return 'COUNT_IS_NOT_NUMBER_ERROR'
   }
+  return _carNames
 }
 
 const checkCarNameLength = (carNames) => {

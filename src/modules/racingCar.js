@@ -37,12 +37,6 @@ const makeResult = (cars) => {
   )
 }
 
-/*
- ************************
- * export 하지않는 함수들   *
- ************************
- */
-
 const moveCar = (car) => {
   if (checkMoveCarCondition()) {
     car.go()

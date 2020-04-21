@@ -34,6 +34,7 @@ const App = () => {
       if (validator === 'COUNT_IS_NOT_NUMBER_ERROR') {
         return setCountIsNotNumberError(true)
       }
+      const _carNames = validator
 
       setCarNameIsBlankError(false)
       setCarNameLengthError(false)
