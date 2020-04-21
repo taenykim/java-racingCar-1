@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Result = ({ result }: { result: any }) => {
+const Result = ({ result }: { result: null | JSX.Element }) => {
   return <>{result}</>
 }
 

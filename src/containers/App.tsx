@@ -10,8 +10,8 @@ const App = () => {
   const [carNameLengthError, setCarNameLengthError] = useState(false)
   const [carNameIsBlankError, setCarNameIsBlankError] = useState(false)
   const [countIsNotNumberError, setCountIsNotNumberError] = useState(false)
-  const [processes, setProcesses] = useState<any[]>([])
-  const [result, setResult] = useState<any>(null)
+  const [processes, setProcesses] = useState<null | JSX.Element[]>(null)
+  const [result, setResult] = useState<null | JSX.Element>(null)
 
   const onChangeCarNames = useCallback((e) => {
     setCarNames(e.target.value)
