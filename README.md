@@ -22,12 +22,12 @@ java-racingCar-1
 
 > MVC 패턴
 
-![](./images/mvc.png)
+![](./src/images/mvc.png)
 
 > MVVM 패턴
 
-![](./images/mvvm.png)
+![](./src/images/mvvm.png)
 
 > FLUX 패턴
 
-![](./images/flux.png)
+![](./src/images/flux.png)
