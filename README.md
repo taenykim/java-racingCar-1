@@ -17,3 +17,15 @@ java-racingCar-1
 │   │   ├── racingCar.test.tsx
 │   │   ├── racingCar.tsx (자동차 관련 함수)
 ```
+
+> MVC 패턴
+
+![](./images/mvc.png)
+
+> MVVM 패턴
+
+![](./images/mvvm.png)
+
+> FLUX 패턴
+
+![](./images/flux.png)
